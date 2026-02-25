@@ -149,16 +149,19 @@
             <div class="project-right">
                 <h4 class="sub-heading">PROJECT DETAILS</h4>
                 <h2 class="main-heading">About the Project</h2>
+
                 <p class="desc">
-                    This minimal house is planned in such a way that the building incorporates
-                    all the spaces in a three-storey building for easy access. The use of cladding
-                    material on the exterior adds a striking character to the whole residence.
+                    This contemporary residence is carefully planned to accommodate all essential
+                    spaces within a well-organized three-level layout, ensuring smooth movement and
+                    convenient access throughout the home. The exterior cladding enhances the visual
+                    appeal, giving the structure a bold and modern identity.
                 </p>
 
                 <p class="desc">
-                    This residence is defined by vertical elements broken by horizontal planes
-                    that create a rhythmic pattern across the building. A humble yet dignified
-                    structure that fulfills the client’s needs perfectly.
+                    The design features strong vertical lines complemented by subtle horizontal
+                    layers, creating a balanced and rhythmic façade. The result is a refined yet
+                    understated home that reflects thoughtful planning while meeting the functional
+                    needs of its occupants.
                 </p>
             </div>
 
@@ -213,6 +216,13 @@
             </div>
         </div>
     </section>
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+
+        <span class="lightbox-arrow left" id="prev">&#10094;</span>
+        <img class="lightbox-img" id="lightbox-img">
+        <span class="lightbox-arrow right" id="next">&#10095;</span>
+    </div>
     <!-- CONTACT FORM SECTION-->
     <section class="float-left w-100 position-relative contact-form-con padding-up padding-down main-box light-bg">
         <div class="container wow fadeIn" data-wow-duration="2s" data-wow-delay="0.3s">
@@ -693,6 +703,48 @@
                         });
                 });
             }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const subImages = document.querySelectorAll(".sub-gallery-item img");
+            const lightbox = document.getElementById("lightbox");
+            const lightboxImg = document.getElementById("lightbox-img");
+            const nextBtn = document.getElementById("next");
+            const prevBtn = document.getElementById("prev");
+            const closeBtn = document.querySelector(".lightbox-close");
+
+            let subIndex = 0;
+
+            function showSubGalleryImage() {
+                lightboxImg.src = subImages[subIndex].src;
+            }
+
+            subImages.forEach((img, index) => {
+                img.onclick = () => {
+                    subIndex = index;
+                    showSubGalleryImage();
+                    lightbox.classList.add("active");
+                };
+            });
+
+            nextBtn.onclick = e => {
+                e.stopPropagation();
+                subIndex = (subIndex + 1) % subImages.length;
+                showSubGalleryImage();
+            };
+
+            prevBtn.onclick = e => {
+                e.stopPropagation();
+                subIndex = (subIndex - 1 + subImages.length) % subImages.length;
+                showSubGalleryImage();
+            };
+
+            closeBtn.onclick = () => {
+                lightbox.classList.remove("active");
+            };
+
         });
     </script>
 </body>

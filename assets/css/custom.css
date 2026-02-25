@@ -766,7 +766,7 @@ a.white-btn:hover {
 .home-about-inner-con {
   display: grid;
   gap: 72px;
-  grid-template-columns: 35.5% 28% 26%;
+ grid-template-columns: repeat(3, 1fr);
   position: relative;
   /* max-width: 1417px;
     margin: 0 auto; */
@@ -2606,7 +2606,7 @@ a.white-btn:hover {
 
 .popup-image .prev:hover,
 .popup-image .next:hover {
-  color: #f1c40f;
+  color: #fff;
 }
 
 .popup-image .prev {
@@ -2906,6 +2906,7 @@ a.white-btn:hover {
   /* Cover to maintain aspect ratio */
   border-radius: 10px;
   display: block;
+  cursor: pointer;
 }
 
 .gallery-pagination {
@@ -3497,3 +3498,114 @@ height: auto;
 }
 
 
+.project-details-section {
+    padding: 40px 0;
+    background-color: #f5f5f5;
+}
+
+.project-details-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.project-details-title {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.project-details-wrapper h3 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.project-details-wrapper p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .project-details-section {
+        padding: 60px 20px;
+    }
+
+    .project-details-title {
+        font-size: 28px;
+    }
+}
+
+/*sub image in portfolio project page popup styles*/
+.sub-gallery-item img {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.sub-gallery-item img:hover {
+    transform: scale(1.03);
+}
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+    z-index: 9999;
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.lightbox-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 50px;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.lightbox-arrow:hover {
+    color: #fff;
+}
+
+.lightbox-arrow.left {
+    left: 30px;
+}
+
+.lightbox-arrow.right {
+    right: 30px;
+}

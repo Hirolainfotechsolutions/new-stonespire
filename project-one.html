@@ -149,19 +149,21 @@
             <div class="project-right">
                 <h4 class="sub-heading">PROJECT DETAILS</h4>
                 <h2 class="main-heading">About the Project</h2>
+
                 <p class="desc">
-                    This minimal house is planned in such a way that the building incorporates
-                    all the spaces in a three-storey building for easy access. The use of cladding
-                    material on the exterior adds a striking character to the whole residence.
+                    This residence is designed around a minimalist concept, with all essential
+                    spaces efficiently organized within a three-level structure. The planning
+                    ensures ease of access throughout the home, while exterior cladding adds a
+                    bold and contemporary character to the overall design.
                 </p>
 
                 <p class="desc">
-                    This residence is defined by vertical elements broken by horizontal planes
-                    that create a rhythmic pattern across the building. A humble yet dignified
-                    structure that fulfills the client’s needs perfectly.
+                    The building form is expressed through strong vertical lines balanced by
+                    horizontal elements, creating a visually rhythmic façade. Simple in approach
+                    yet carefully detailed, the design results in a dignified home that meets
+                    the functional and aesthetic expectations of its occupants.
                 </p>
             </div>
-
         </div>
     </section>
 
@@ -215,7 +217,13 @@
             </div>
         </div>
     </section>
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close">&times;</span>
 
+        <span class="lightbox-arrow left" id="prev">&#10094;</span>
+        <img class="lightbox-img" id="lightbox-img">
+        <span class="lightbox-arrow right" id="next">&#10095;</span>
+    </div>
     <!-- CONTACT FORM SECTION-->
     <section class="float-left w-100 position-relative contact-form-con padding-up padding-down main-box light-bg">
         <div class="container wow fadeIn" data-wow-duration="2s" data-wow-delay="0.3s">
@@ -697,7 +705,48 @@
             }
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
 
+            const subImages = document.querySelectorAll(".sub-gallery-item img");
+            const lightbox = document.getElementById("lightbox");
+            const lightboxImg = document.getElementById("lightbox-img");
+            const nextBtn = document.getElementById("next");
+            const prevBtn = document.getElementById("prev");
+            const closeBtn = document.querySelector(".lightbox-close");
+
+            let subIndex = 0;
+
+            function showSubGalleryImage() {
+                lightboxImg.src = subImages[subIndex].src;
+            }
+
+            subImages.forEach((img, index) => {
+                img.onclick = () => {
+                    subIndex = index;
+                    showSubGalleryImage();
+                    lightbox.classList.add("active");
+                };
+            });
+
+            nextBtn.onclick = e => {
+                e.stopPropagation();
+                subIndex = (subIndex + 1) % subImages.length;
+                showSubGalleryImage();
+            };
+
+            prevBtn.onclick = e => {
+                e.stopPropagation();
+                subIndex = (subIndex - 1 + subImages.length) % subImages.length;
+                showSubGalleryImage();
+            };
+
+            closeBtn.onclick = () => {
+                lightbox.classList.remove("active");
+            };
+
+        });
+    </script>
 </body>
 
 </html>

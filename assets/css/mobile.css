@@ -101,7 +101,8 @@
 
   .home-about-inner-con {
     gap: 34px;
-    grid-template-columns: 35.5% 28% 26%;
+    /* grid-template-columns: 35.5% 28% 26%; */
+    grid-template-columns: repeat(3, 1fr);
     max-width: 100%;
     align-items: unset;
   }
@@ -2924,6 +2925,9 @@
 
 @media (max-width: 540px) {
   .home-about-main-img-con figure img {
+    display: block;
+  }
+  .home-about-2-img figure img {
     display: none;
   }
 }
