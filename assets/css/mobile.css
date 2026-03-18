@@ -2919,13 +2919,13 @@
 
 @media (max-width: 768px) {
   .banner-img-con figure img {
-    display: none;
+    display: block;
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 768px) {
   .home-about-main-img-con figure img {
-    display: block;
+    display: none;
   }
   .home-about-2-img figure img {
     display: none;
